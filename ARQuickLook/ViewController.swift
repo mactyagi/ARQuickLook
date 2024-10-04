@@ -49,6 +49,10 @@ class ViewController: UIViewController,
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     modelIndex = indexPath.row
+    let previewController = QLPreviewController()
+    previewController.dataSource = self
+    previewController.delegate = self
+    present(previewController, animated: false)
   }
   
   // MARK: - QLPreviewControllerDataSource
@@ -61,6 +65,5 @@ class ViewController: UIViewController,
     let url = Bundle.main.url(forResource: modelNames[modelIndex], withExtension: "usdz")!
     return url as QLPreviewItem
   }
-  
 }
 
